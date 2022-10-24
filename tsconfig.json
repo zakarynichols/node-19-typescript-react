@@ -1,0 +1,16 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "outDir": "./public/dist",
+    "jsx": "react-jsx"
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules", "**/*__tests__"],
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": ["**/node_modules"]
+  }
+}
