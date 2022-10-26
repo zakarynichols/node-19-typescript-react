@@ -11,14 +11,21 @@ export default {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.([cm]?ts|tsx)$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    // Add `.ts` and `.tsx` as a resolvable extension.
+    extensions: [".ts", ".tsx", ".js"],
+    // Add support for TypeScripts fully qualified ESM imports.
+    extensionAlias: {
+      ".js": [".js", ".ts", ".tsx", ".jsx"],
+      ".cjs": [".cjs", ".cts"],
+      ".mjs": [".mjs", ".mts"],
+    },
   },
   output: {
     filename: "[name].[contenthash].js",
@@ -30,4 +37,7 @@ export default {
       title: "React & ECMAScript modules",
     }),
   ],
+  experiments: {
+    topLevelAwait: true,
+  },
 };
